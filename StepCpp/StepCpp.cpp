@@ -72,9 +72,9 @@ void WriteToFile()
 
 	for (size_t i = 0; i < length; i++)
 	{
-		auto student = students[i];
+		auto student = *(students + i);
 
-		fprintf_s(stream, "%s%s%d", student.name, ";", student.group);
+		fprintf_s(stream, "%s%s", student.name, ";", student.group);
 		fprintf_s(stream, "\n");
 	}
 
@@ -83,8 +83,6 @@ void WriteToFile()
 
 void ReadFromFile()
 {
-	char buffer[25]{};
-	int index = 0;
 	FILE* stream;
 
 	auto error = fopen_s(&stream, "file.txt", "r");
